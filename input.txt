@@ -1,0 +1,3 @@
+This is a sample app to demonstrate piping of streams.
+Create a input.txt file with data.
+Then run this app to write data from input file to output file.

@@ -1,13 +1,10 @@
 const fs = require("fs");
-const stream = fs.createWriteStream("demo.txt");
-stream.write("First line to the file\n");
-stream.write("Now it is the second line\n");
-/**
- * finish event is triggered on closing the stream with end(),
- *  without which finish event would never be triggered*/
-
-
-stream.on('finish',() => console.log("File has been written"));
-stream.end();
+const inStream = fs.createReadStream("input.txt");
+inStream.on("error",() => {
+      console.log("Error while accessing file");
+});
+const outStream = fs.createWriteStream("output.txt");
+inStream.pipe(outStream);
+outStream.on('close',() => console.log("File has been written"));
 
 
